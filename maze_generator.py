@@ -33,13 +33,13 @@ def draw_cells(cells:list, rows, cols, offset, in_progress=True):
                     (x, y), (offset, offset)
                 ))
             if cells[i][j].UP:
-                pygame.draw.line(screen, WHITE, (x        , y       ) , (x+offset , y       ), 2)
+                pygame.draw.line(screen, WHITE, (x        , y       ) , (x+offset , y       ), buffer)
             if cells[i][j].DOWN:
-                pygame.draw.line(screen, WHITE, (x        , y+offset) , (x+offset , y+offset), 2)
+                pygame.draw.line(screen, WHITE, (x        , y+offset) , (x+offset , y+offset), buffer)
             if cells[i][j].RIGHT:
-                pygame.draw.line(screen, WHITE, (x+offset , y       ) , (x+offset , y+offset), 2)
+                pygame.draw.line(screen, WHITE, (x+offset , y       ) , (x+offset , y+offset), buffer)
             if cells[i][j].LEFT:
-                pygame.draw.line(screen, WHITE, (x        , y       ) , (x        , y+offset), 2)
+                pygame.draw.line(screen, WHITE, (x        , y       ) , (x        , y+offset), buffer)
 
 
 def draw_solution(solution, offset):
@@ -126,7 +126,6 @@ def main():
                 current.visited = True
                 stack.append( (current, row_index, col_index) )
                 if current.end:
-                    print("done")
                     solution = [(r,c) for _,r,c in stack]
 
         else:
